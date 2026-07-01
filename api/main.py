@@ -29,7 +29,7 @@ import time
 from pathlib import Path
 from typing import List, Optional
 
-from fastapi import FastAPI, File, Form, HTTPException, Request, UploadFile
+from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
@@ -166,33 +166,33 @@ def model_info():
 
 @app.post("/match", tags=["Matching"])
 async def match_resumes(
-    request           : Request,
-    resume1           : Optional[UploadFile] = File(None, description="Resume file 1 (PDF, DOCX, TXT)"),
-    resume2           : Optional[UploadFile] = File(None, description="Resume file 2"),
-    resume3           : Optional[UploadFile] = File(None, description="Resume file 3"),
-    resume4           : Optional[UploadFile] = File(None, description="Resume file 4"),
-    resume5           : Optional[UploadFile] = File(None, description="Resume file 5"),
-    jd_text           : str                  = Form("",   description="Job description as plain text"),
-    jd_file           : Optional[UploadFile] = File(None, description="Job description file (use jd_text OR jd_file)"),
-    similarity_weight : float                = Form(0.7,  description="Semantic similarity weight 0.5–0.9 (default 0.7)"),
+    resume1           : UploadFile = File(...,  description="Resume file 1 (PDF, DOCX, TXT) — required"),
+    resume2           : UploadFile = File(...,  description="Resume file 2 — upload same file again if only 1 resume"),
+    jd_text           : str        = Form("",   description="Job description as plain text"),
+    similarity_weight : float      = Form(0.7,  description="Semantic similarity weight 0.5–0.9 (default 0.7)"),
 ):
     """
     **Main endpoint** — match resumes against a job description.
 
-    Upload up to 5 resume files (PDF/DOCX/TXT) + a JD (text or file).
+    Upload 1 or 2 resume files (PDF/DOCX/TXT) + paste a JD in jd_text.
+    For a single resume, upload it in resume1 and leave resume2 empty (or upload same file).
     Returns ranked candidates with scores, skills, and recommendations.
 
-    **curl example (multiple resumes):**
+    **curl example:**
     ```
     curl -X POST https://your-api-url/match \\
       -F "resume1=@resume1.pdf" \\
-      -F "resume2=@resume2.docx" \\
+      -F "resume2=@resume2.pdf" \\
       -F "jd_text=We are looking for a Python ML Engineer..."
     ```
     """
-    # Collect whichever resume slots were filled
-    resumes = [f for f in [resume1, resume2, resume3, resume4, resume5]
-               if f is not None and f.filename]
+    # Collect valid resume files (skip empty/duplicate filenames)
+    seen = set()
+    resumes = []
+    for f in [resume1, resume2]:
+        if f and f.filename and f.filename not in seen:
+            seen.add(f.filename)
+            resumes.append(f)
     t_start = time.time()
     model   = get_loaded_model()
 
