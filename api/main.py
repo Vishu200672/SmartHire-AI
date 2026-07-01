@@ -94,6 +94,33 @@ app.add_middleware(
     allow_headers     = ["*"],
 )
 
+# ── Fix Swagger UI to show file pickers for UploadFile fields ─
+from fastapi.openapi.utils import get_openapi
+
+def custom_openapi():
+    if app.openapi_schema:
+        return app.openapi_schema
+    schema = get_openapi(
+        title=app.title,
+        version=app.version,
+        description=app.description,
+        routes=app.routes,
+    )
+    # Force resume1-5 and jd_file to render as file upload in Swagger
+    for path_data in schema.get("paths", {}).values():
+        for method_data in path_data.values():
+            body = method_data.get("requestBody", {})
+            content = body.get("content", {})
+            form = content.get("multipart/form-data", {})
+            props = form.get("schema", {}).get("properties", {})
+            for field in ["resume1","resume2","resume3","resume4","resume5","jd_file"]:
+                if field in props:
+                    props[field] = {"type": "string", "format": "binary"}
+    app.openapi_schema = schema
+    return app.openapi_schema
+
+app.openapi = custom_openapi
+
 
 # ═════════════════════════════════════════════════════════════
 #  HEALTH & INFO
