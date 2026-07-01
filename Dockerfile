@@ -27,21 +27,7 @@ RUN pip install --no-cache-dir torch==2.1.0+cpu \
 
 # Step 2: Install remaining dependencies
 COPY --chown=user requirements_api.txt .
-RUN pip install --no-cache-dir \
-    transformers==4.35.2 \
-    sentence-transformers==2.2.2 \
-    scikit-learn==1.3.2 \
-    pandas==2.1.3 \
-    numpy==1.26.2 \
-    scipy==1.11.4 \
-    fastapi==0.104.1 \
-    "uvicorn[standard]==0.24.0" \
-    python-multipart==0.0.6 \
-    pdfplumber==0.10.3 \
-    PyPDF2==3.0.1 \
-    python-docx==1.1.0 \
-    tqdm==4.66.1 \
-    python-dateutil==2.8.2
+RUN pip install --no-cache-dir -r requirements_api.txt
 
 # Step 3: Copy project source
 COPY --chown=user src/ ./src/
