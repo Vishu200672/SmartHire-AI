@@ -111,8 +111,9 @@ def root():
 
 
 @app.get("/health", tags=["Health"])
+@app.head("/health", tags=["Health"])
 def health():
-    """Health check."""
+    """Health check — supports both GET and HEAD (for uptime monitors)."""
     return {"status": "healthy", "timestamp": time.strftime("%Y-%m-%dT%H:%M:%S")}
 
 
