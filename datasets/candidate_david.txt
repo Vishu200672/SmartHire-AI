@@ -1,0 +1,35 @@
+DAVID PARK
+david.park@email.com | Chicago, IL
+
+SUMMARY
+Full-stack software engineer with 5 years of experience in web development.
+Strong React, Node.js, and TypeScript skills. Recently started learning Python and machine learning.
+
+EXPERIENCE
+
+Senior Frontend Engineer | WebAgency | 2021 – Present
+- Built responsive React and TypeScript web applications for 10+ enterprise clients.
+- Developed RESTful APIs using Node.js and Express, deployed on AWS EC2.
+- Managed PostgreSQL and MongoDB databases.
+- Implemented CI/CD pipelines using GitHub Actions and Jenkins.
+- Used Docker for containerization and deployment to production.
+
+Frontend Developer | StartupCo | 2019 – 2021
+- Built user interfaces using React, Redux, HTML, and CSS.
+- Integrated REST APIs and GraphQL endpoints.
+- Wrote unit tests using Jest and Selenium.
+
+SKILLS
+- Programming: JavaScript, TypeScript, React, Node.js, HTML, CSS, Python (beginner)
+- Backend: Express, GraphQL, REST API
+- Cloud: AWS (EC2, S3), Docker
+- Databases: PostgreSQL, MongoDB, MySQL
+- Tools: Git, GitHub, Jira, Jenkins, GitHub Actions, CI/CD
+- Practices: Agile, Scrum, TDD, unit testing, teamwork, communication
+
+RECENT LEARNING
+- Completed Coursera Machine Learning course (Andrew Ng)
+- Currently studying scikit-learn and Pandas for ML basics
+
+EDUCATION
+BS Computer Science — University of Illinois Urbana-Champaign (2019)

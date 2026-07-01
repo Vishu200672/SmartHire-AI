@@ -1,0 +1,47 @@
+Machine Learning Engineer — Job Description
+
+Company: TechCorp AI Solutions
+Location: Remote / San Francisco, CA
+Type: Full-time
+
+About the Role:
+We are looking for a talented Machine Learning Engineer to join our AI/ML team.
+
+Responsibilities:
+- Design and implement machine learning models for NLP, computer vision, and recommendation systems.
+- Develop and maintain data pipelines using Apache Spark and Airflow.
+- Deploy models at scale using Docker, Kubernetes, and AWS SageMaker.
+- Conduct A/B testing and experimentation to validate model performance.
+- Collaborate cross-functionally with data engineering, product, and backend teams.
+- Apply transformer-based architectures (BERT, DistilBERT, RoBERTa) for NLP tasks.
+- Maintain MLflow experiment tracking and model versioning.
+
+Required Skills:
+- Python (3+ years experience)
+- PyTorch or TensorFlow (deep learning framework)
+- Natural Language Processing (NLP), BERT, Transformer models
+- Scikit-learn for classical ML tasks
+- SQL for data querying and analysis
+- Docker and containerization
+- Git and version control
+- AWS (SageMaker, S3, EC2) or GCP / Azure
+- Statistics and probability fundamentals
+- Machine learning model deployment
+- Data analysis and feature engineering
+
+Preferred:
+- Hugging Face Transformers library
+- MLflow or Kubeflow
+- Kubernetes orchestration
+- Apache Spark and distributed computing
+- Streamlit or Gradio for model demos
+- FastAPI or Flask for REST API development
+
+Soft Skills:
+- Strong communication and presentation skills
+- Teamwork and cross-functional collaboration
+- Attention to detail and analytical thinking
+- Problem solving and critical thinking
+
+Education:
+- BS/MS in Computer Science, Data Science, or related field

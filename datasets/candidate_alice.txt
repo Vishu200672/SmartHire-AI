@@ -1,0 +1,35 @@
+ALICE JOHNSON
+alice.johnson@email.com | San Francisco, CA
+
+SUMMARY
+Machine Learning Engineer with 4 years of experience building and deploying NLP and computer vision systems.
+Strong Python and PyTorch background with hands-on AWS and Docker experience.
+
+EXPERIENCE
+
+Senior Machine Learning Engineer | DataNova Inc | 2022 – Present
+- Developed a BERT-based document classification system achieving 94% accuracy on 500K+ documents.
+- Built and deployed NLP pipelines using Hugging Face Transformers and PyTorch on AWS SageMaker.
+- Implemented MLflow experiment tracking reducing model iteration cycles by 40%.
+- Containerized ML services with Docker and orchestrated using Kubernetes in production.
+- Designed REST APIs using FastAPI to serve model predictions at under 50ms latency.
+- Conducted A/B testing for model variants resulting in 12% uplift in user engagement.
+
+Machine Learning Engineer | StartupAI | 2021 – 2022
+- Built recommendation system using scikit-learn for 200K users.
+- Developed text preprocessing and feature engineering pipelines using Pandas and NumPy.
+- Maintained SQL databases and wrote complex ETL queries for model training datasets.
+- Deployed Flask APIs for model serving in a CI/CD GitHub Actions pipeline.
+
+SKILLS
+- Programming: Python, SQL, Bash
+- ML Frameworks: PyTorch, TensorFlow, Hugging Face Transformers, scikit-learn, XGBoost
+- NLP: BERT, DistilBERT, RoBERTa, transformer, natural language processing, named entity recognition
+- Cloud: AWS (SageMaker, S3, EC2), GCP, Docker, Kubernetes
+- Tools: MLflow, Git, GitHub, Airflow, Apache Spark, FastAPI, Flask, Streamlit
+- Data: Pandas, NumPy, Plotly, feature engineering, data analysis
+- Practices: CI/CD, unit testing, pytest, agile, machine learning, deep learning, model deployment, statistics
+
+EDUCATION
+MS Computer Science — Stanford University (2020)
+BS Computer Science — UC Berkeley (2018)

@@ -1,0 +1,35 @@
+BOB MARTINEZ
+bob.martinez@email.com | New York, NY
+
+SUMMARY
+Data Scientist with 2 years of experience in machine learning and data analytics.
+Strong Python and scikit-learn skills. Looking to grow into production ML engineering.
+
+EXPERIENCE
+
+Data Scientist | Retail Analytics Corp | 2023 – Present
+- Built classification models using scikit-learn (Random Forest, Gradient Boosting) for customer segmentation.
+- Wrote SQL queries to extract and transform data from PostgreSQL databases.
+- Created data visualization dashboards using Matplotlib and Seaborn.
+- Used Pandas for data cleaning and feature engineering on tabular datasets.
+
+Junior Data Analyst | MarketingCo | 2022 – 2023
+- Performed exploratory data analysis using Python and Excel.
+- Maintained ETL pipelines for reporting data using SQL and Python scripts.
+
+SKILLS
+- Programming: Python, SQL, R
+- ML: scikit-learn, XGBoost, Pandas, NumPy, Matplotlib, Seaborn
+- Tools: Git, Jupyter, Excel, Tableau
+- Databases: PostgreSQL, MySQL, SQLite
+
+EDUCATION
+BS Statistics — New York University (2022)
+
+CERTIFICATIONS
+- Google Data Analytics Professional Certificate (2023)
+- AWS Cloud Practitioner (2023)
+
+PROJECTS
+- Customer Churn Prediction: Random Forest model, 87% accuracy
+- Sales Forecasting: Time series analysis with ARIMA and Prophet

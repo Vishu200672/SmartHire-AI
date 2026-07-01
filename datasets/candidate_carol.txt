@@ -1,0 +1,39 @@
+CAROL CHEN
+carol.chen@email.com | Seattle, WA
+
+SUMMARY
+NLP Research Engineer with 3 years specializing in transformer architectures and large language models.
+Deep expertise in Hugging Face ecosystem, PyTorch, and deploying NLP solutions at scale.
+Published researcher with experience in semantic search, text classification, and fine-tuning LLMs.
+
+EXPERIENCE
+
+NLP Engineer | SearchTech Inc | 2022 – Present
+- Fine-tuned BERT, DistilBERT, and RoBERTa models for semantic search and document retrieval.
+- Built production NLP pipelines using Hugging Face Transformers processing 1M+ documents/day.
+- Implemented vector databases (FAISS, Pinecone) for semantic similarity search.
+- Deployed models on AWS using Docker containers and Kubernetes orchestration.
+- Used MLflow for experiment tracking and model versioning across 50+ experiments.
+- Developed FastAPI microservices for real-time NLP inference at under 30ms P99 latency.
+- Applied LangChain for RAG (retrieval-augmented generation) pipeline development.
+- Conducted A/B testing with statistical significance testing for model variants.
+
+ML Research Intern | University AI Lab | 2021 – 2022
+- Researched transformer-based architectures for natural language processing tasks.
+- Published paper on DistilBERT optimization (ACL 2022 Workshop).
+- Built text classification and named entity recognition systems using PyTorch.
+- Worked with Apache Spark for large-scale text processing (10M+ documents).
+
+SKILLS
+- Programming: Python, SQL, Bash, C++
+- DL/ML: PyTorch, TensorFlow, scikit-learn, XGBoost, LightGBM
+- NLP: BERT, DistilBERT, RoBERTa, GPT, Hugging Face Transformers, spaCy, NLTK, LangChain
+- Deep Learning: transformer, natural language processing, computer vision, embedding, fine-tuning
+- Cloud: AWS (SageMaker, S3), GCP, Docker, Kubernetes, CI/CD, GitHub Actions
+- Data: Pandas, NumPy, Plotly, Streamlit, Apache Spark, Airflow, feature engineering, data analysis
+- Databases: PostgreSQL, MongoDB, Pinecone, FAISS, vector database
+- Practices: unit testing, pytest, MLflow, machine learning, deep learning, model deployment, statistics
+
+EDUCATION
+MS Machine Learning — Carnegie Mellon University (2021)
+BS Computer Science — University of Washington (2019)
