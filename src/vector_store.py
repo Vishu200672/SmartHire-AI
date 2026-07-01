@@ -16,7 +16,7 @@ class PineconeVectorStore:
     def _connect(self):
         try:
             from pinecone import Pinecone
-            pc = Pinecone([REDACTED])
+            pc = Pinecone(api_key="pcsk_3YJTrB_C2vfzUCyLhm2vxKjXAbmUK38yyXBBVU9r6uCbjeKAiXCusyv9BafYNKprxoagcw")
             self._index = pc.Index(host=PINECONE_HOST)
             stats = self._index.describe_index_stats()
             logger.info(f"Pinecone connected. Vectors: {stats.total_vector_count}")
