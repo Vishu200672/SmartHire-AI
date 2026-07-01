@@ -1,4 +1,14 @@
-<<<<<<< HEAD
+---
+title: SmartHire AI
+emoji: 🎯
+colorFrom: indigo
+colorTo: purple
+sdk: docker
+pinned: false
+license: mit
+short_description: Transformer-based resume and job description matching API
+---
+
 # 🤖 SmartHire AI: Transformer-Based Resume & Job Matching System
 
 [![Python](https://img.shields.io/badge/Python-3.9%2B-3776ab?style=flat-square&logo=python)](https://python.org)
@@ -24,34 +34,6 @@ SmartHire AI is a **production-style HRTech application** that demonstrates:
 - **Persistent vector index** (ChromaDB/NumPy) for instant sub-100ms resume search
 - **REST API** (FastAPI) for frontend integration
 - **Interactive recruiter dashboard** built with Streamlit + Plotly
-
----
-
-## 📸 Screenshots
-
-### 🖥️ Upload & Analyze
-![Upload & Analyze](assets/Screenshot%202026-06-26%20160129.png)
-
-### 📊 Match Results — Pipeline Summary & Score Distribution
-![Match Results](assets/Screenshot%202026-06-26%20160148.png)
-
-### 📊 Match Results — Charts & Per-Candidate Cards
-| Pie Chart + Scatter Plot | All Candidate Score Cards |
-|--------------------------|--------------------------| 
-| ![](assets/Screenshot%202026-06-26%20160204.png) | ![](assets/Screenshot%202026-06-26%20160227.png) |
-
-### 🔍 Skill Gap Analysis
-| Skill Chips (Matching / Missing / Critical) | Skill Matrix & Cross-Candidate Comparison |
-|--------------------------------------------|------------------------------------------|
-| ![](assets/Screenshot%202026-06-26%20160310.png) | ![](assets/Screenshot%202026-06-26%20160324.png) |
-
-### 🏆 Candidate Ranking
-| Leaderboard + Top Candidate Gauge | Score Breakdown + CSV Export |
-|----------------------------------|------------------------------|
-| ![](assets/Screenshot%202026-06-26%20160347.png) | ![](assets/Screenshot%202026-06-26%20160404.png) |
-
-### 📁 CSV Export Result
-![CSV Export](assets/Screenshot%202026-06-26%20160431.png)
 
 ---
 
@@ -344,7 +326,7 @@ Weights are configurable via API parameter or Streamlit sidebar slider.
 
 | Component | Technology |
 |-----------|-----------|
-| Core Model | Fine-tuned DistilBERT / `all-MiniLM-L6-v2` |
+| Core Model | Fine-tuned `all-MiniLM-L6-v2` (Sentence Transformers) |
 | DL Framework | PyTorch 2.0+ |
 | NLP Library | Hugging Face Transformers + Sentence-Transformers |
 | REST API | FastAPI + Uvicorn |
@@ -411,17 +393,4 @@ This project is licensed under the **MIT License** — see [LICENSE](LICENSE) fo
 Built as a portfolio project demonstrating Transformer-based NLP, semantic search, fine-tuning, REST API design, and production ML engineering practices.
 
 **GitHub**: [github.com/Vishu200672/SmartHire-AI](https://github.com/Vishu200672/SmartHire-AI)
-=======
----
-title: SmartHire AI
-emoji: 🐨
-colorFrom: yellow
-colorTo: yellow
-sdk: docker
-pinned: false
-license: mit
-short_description: Smarthire-AI Model
----
-
-Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
->>>>>>> baf962354e1d9489fd69e0a72ef89a968b89b38b
+**HF Space**: [huggingface.co/spaces/Vishu2006/SmartHire-AI](https://huggingface.co/spaces/Vishu2006/SmartHire-AI)
