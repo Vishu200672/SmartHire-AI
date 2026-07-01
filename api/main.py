@@ -94,8 +94,22 @@ app.add_middleware(
     allow_headers     = ["*"],
 )
 
-# ── Fix Swagger UI to show file pickers for UploadFile fields ─
+# ── Fix Swagger UI file pickers (FastAPI 0.129.1+ bug workaround) ─
+# FastAPI 0.129.1+ emits contentMediaType instead of format:binary
+# Swagger UI 5.x only renders file pickers for format:binary
 from fastapi.openapi.utils import get_openapi
+
+def _fix_file_upload_schemas(schema: dict) -> None:
+    """Recursively fix UploadFile fields so Swagger shows file pickers."""
+    for component in schema.get("components", {}).get("schemas", {}).values():
+        for prop in component.get("properties", {}).values():
+            if prop.get("contentMediaType") == "application/octet-stream":
+                prop.pop("contentMediaType", None)
+                prop["format"] = "binary"
+            items = prop.get("items", {})
+            if items.get("contentMediaType") == "application/octet-stream":
+                items.pop("contentMediaType", None)
+                items["format"] = "binary"
 
 def custom_openapi():
     if app.openapi_schema:
@@ -106,16 +120,7 @@ def custom_openapi():
         description=app.description,
         routes=app.routes,
     )
-    # Force resume1-5 and jd_file to render as file upload in Swagger
-    for path_data in schema.get("paths", {}).values():
-        for method_data in path_data.values():
-            body = method_data.get("requestBody", {})
-            content = body.get("content", {})
-            form = content.get("multipart/form-data", {})
-            props = form.get("schema", {}).get("properties", {})
-            for field in ["resume1","resume2","resume3","resume4","resume5","jd_file"]:
-                if field in props:
-                    props[field] = {"type": "string", "format": "binary"}
+    _fix_file_upload_schemas(schema)
     app.openapi_schema = schema
     return app.openapi_schema
 
