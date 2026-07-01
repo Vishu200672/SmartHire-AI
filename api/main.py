@@ -330,7 +330,9 @@ async def extract_skills(
 def index_info():
     """Returns current vector index metadata."""
     try:
-        return get_loaded_store().get_info()
+        store = get_loaded_store()
+        stats = store.get_stats() if hasattr(store, "get_stats") else store.get_info()
+        return stats
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -519,3 +521,5 @@ async def embed_text(
         return {"status": "success", "dim": len(vec), "embedding": vec}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Embed failed: {e}")
+
+
