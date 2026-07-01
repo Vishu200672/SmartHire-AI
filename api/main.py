@@ -27,6 +27,7 @@ import os
 import sys
 import time
 from pathlib import Path
+from typing import List, Optional
 
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
@@ -133,9 +134,9 @@ def model_info():
 
 @app.post("/match", tags=["Matching"])
 async def match_resumes(
-    resumes           : list[UploadFile] = File(...,  description="Resume files (PDF, DOCX, TXT) — multiple allowed"),
+    resumes           : List[UploadFile] = File(...,  description="Resume files (PDF, DOCX, TXT) — multiple allowed"),
     jd_text           : str              = Form("",   description="Job description as plain text"),
-    jd_file           : UploadFile       = File(None, description="Job description file (use jd_text OR jd_file)"),
+    jd_file           : Optional[UploadFile] = File(None, description="Job description file (use jd_text OR jd_file)"),
     similarity_weight : float            = Form(0.7,  description="Semantic similarity weight 0.5–0.9 (default 0.7)"),
 ):
     """
@@ -314,7 +315,7 @@ def index_candidates():
 
 @app.post("/index/build", tags=["Vector Index"])
 async def index_build(
-    resumes : list[UploadFile] = File(...,  description="Resume files to encode and store"),
+    resumes : List[UploadFile] = File(...,  description="Resume files to encode and store"),
     rebuild : bool             = Form(False, description="Clear existing index first"),
 ):
     """
