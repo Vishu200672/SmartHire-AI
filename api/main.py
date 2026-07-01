@@ -29,7 +29,7 @@ import time
 from pathlib import Path
 from typing import List, Optional
 
-from fastapi import FastAPI, File, Form, HTTPException, UploadFile
+from fastapi import FastAPI, File, Form, HTTPException, Request, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
@@ -134,25 +134,33 @@ def model_info():
 
 @app.post("/match", tags=["Matching"])
 async def match_resumes(
-    resumes           : List[UploadFile] = File(...,  description="Resume files (PDF, DOCX, TXT) — multiple allowed"),
-    jd_text           : str              = Form("",   description="Job description as plain text"),
+    request           : Request,
+    resume1           : Optional[UploadFile] = File(None, description="Resume file 1 (PDF, DOCX, TXT)"),
+    resume2           : Optional[UploadFile] = File(None, description="Resume file 2"),
+    resume3           : Optional[UploadFile] = File(None, description="Resume file 3"),
+    resume4           : Optional[UploadFile] = File(None, description="Resume file 4"),
+    resume5           : Optional[UploadFile] = File(None, description="Resume file 5"),
+    jd_text           : str                  = Form("",   description="Job description as plain text"),
     jd_file           : Optional[UploadFile] = File(None, description="Job description file (use jd_text OR jd_file)"),
-    similarity_weight : float            = Form(0.7,  description="Semantic similarity weight 0.5–0.9 (default 0.7)"),
+    similarity_weight : float                = Form(0.7,  description="Semantic similarity weight 0.5–0.9 (default 0.7)"),
 ):
     """
     **Main endpoint** — match resumes against a job description.
 
-    Upload resumes (PDF/DOCX/TXT) + a JD (text or file).
+    Upload up to 5 resume files (PDF/DOCX/TXT) + a JD (text or file).
     Returns ranked candidates with scores, skills, and recommendations.
 
-    **curl example:**
+    **curl example (multiple resumes):**
     ```
     curl -X POST https://your-api-url/match \\
-      -F "resumes=@resume1.pdf" \\
-      -F "resumes=@resume2.docx" \\
+      -F "resume1=@resume1.pdf" \\
+      -F "resume2=@resume2.docx" \\
       -F "jd_text=We are looking for a Python ML Engineer..."
     ```
     """
+    # Collect whichever resume slots were filled
+    resumes = [f for f in [resume1, resume2, resume3, resume4, resume5]
+               if f is not None and f.filename]
     t_start = time.time()
     model   = get_loaded_model()
 
