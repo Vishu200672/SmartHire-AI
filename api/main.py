@@ -66,7 +66,7 @@ def get_loaded_model():
 def get_loaded_store():
     global _vector_store
     if _vector_store is None:
-        _vector_store = get_vector_store(persist_dir=str(ROOT / "vector_db"))
+        _vector_store = get_vector_store()
     return _vector_store
 
 
@@ -521,5 +521,6 @@ async def embed_text(
         return {"status": "success", "dim": len(vec), "embedding": vec}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Embed failed: {e}")
+
 
 
