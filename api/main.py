@@ -186,30 +186,24 @@ async def match_resumes(
       -F "jd_text=We are looking for a Python ML Engineer..."
     ```
     """
-    # Collect valid resume files (skip empty/duplicate filenames)
+    # Collect valid resume files (skip duplicates)
     seen = set()
     resumes = []
     for f in [resume1, resume2]:
         if f and f.filename and f.filename not in seen:
             seen.add(f.filename)
             resumes.append(f)
+
     t_start = time.time()
     model   = get_loaded_model()
 
     similarity_weight = round(max(0.5, min(0.9, similarity_weight)), 2)
     skill_weight      = round(1.0 - similarity_weight, 2)
 
-    # Parse JD
-    raw_jd = ""
-    if jd_file and jd_file.filename:
-        try:
-            raw_jd = parse_job_description(await jd_file.read(), filename=jd_file.filename)
-        except Exception as e:
-            raise HTTPException(status_code=400, detail=f"JD file parse failed: {e}")
-    elif jd_text and jd_text.strip():
-        raw_jd = jd_text.strip()
-    else:
-        raise HTTPException(status_code=400, detail="Provide either jd_text or jd_file.")
+    # Parse JD from text
+    if not jd_text or not jd_text.strip():
+        raise HTTPException(status_code=400, detail="jd_text is required — paste the job description.")
+    raw_jd = jd_text.strip()
 
     try:
         jd_clean = preprocess_text(raw_jd)
