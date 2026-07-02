@@ -45,6 +45,9 @@ class PineconeVectorStore:
     def search(self, query_embedding, top_k=10):
         res = self._index.query(vector=query_embedding.cpu().numpy().tolist(), top_k=top_k, include_metadata=True)
         return [{"name": m.metadata.get("name","Unknown"), "score": round(m.score*100,2), "text_preview": m.metadata.get("text_preview",""), "text_length": m.metadata.get("text_length",0), "indexed_at": m.metadata.get("indexed_at",""), "id": m.id} for m in res.matches]
+    def is_empty(self):
+        stats = self._index.describe_index_stats()
+        return stats.total_vector_count == 0
     def get_stats(self):
         stats = self._index.describe_index_stats()
         return {"backend": "pinecone", "connected": True, "total_vectors": stats.total_vector_count, "index_name": PINECONE_INDEX, "dimension": EMBEDDING_DIM}
