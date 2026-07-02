@@ -442,11 +442,11 @@ async def index_search(
             {
                 "rank"         : i + 1,
                 "name"         : r["name"],
-                "similarity_pct": round(r["score"] * 100, 2),
-                "indexed_at"   : r.get("metadata", {}).get("indexed_at", "N/A"),
-                "text_length"  : r.get("metadata", {}).get("text_length", 0),
-                "embedding_dim": r.get("metadata", {}).get("embedding_dim", "N/A"),
-                "preview"      : (r.get("text") or r.get("metadata", {}).get("text_preview", ""))[:300],
+                "similarity_pct": r["score"],
+                "indexed_at"   : r.get("indexed_at", "N/A"),
+                "text_length"  : r.get("text_length", 0),
+                "embedding_dim": 384,
+                "preview"      : r.get("text_preview", "")[:300],
             }
             for i, r in enumerate(results)
         ],
