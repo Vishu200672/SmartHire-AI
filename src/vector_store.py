@@ -41,7 +41,7 @@ class PineconeVectorStore:
         for i in range(0, len(vectors), 100):
             self._index.upsert(vectors=vectors[i:i+100])
         stats = self._index.describe_index_stats()
-        return {"indexed": len(vectors), "total_vectors": stats.total_vector_count, "backend": "pinecone"}
+        return {"indexed": len(vectors), "skipped": 0, "total": len(vectors), "total_vectors": stats.total_vector_count, "backend": "pinecone"}
     def search(self, query_embedding, top_k=10):
         res = self._index.query(vector=query_embedding.cpu().numpy().tolist(), top_k=top_k, include_metadata=True)
         return [{"name": m.metadata.get("name","Unknown"), "score": round(m.score*100,2), "text_preview": m.metadata.get("text_preview",""), "text_length": m.metadata.get("text_length",0), "indexed_at": m.metadata.get("indexed_at",""), "id": m.id} for m in res.matches]
